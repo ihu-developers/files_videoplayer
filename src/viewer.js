@@ -49,6 +49,8 @@ var videoViewer = {
 			playerView.appendChild(source);
 
 			if (videoViewer.inline === null) {
+				var userDisplayName = $('head').data('user-displayname');
+
 				var overlay = document.createElement('div');
 				overlay.id = 'videoplayer_overlay';
 
@@ -96,6 +98,7 @@ var videoViewer = {
 					closeButton.addEventListener('click', function () {
 						videoViewer.hidePlayer();
 					});
+					$('#my_video_1').append('<div class="videojs-watermark-text">' + userDisplayName + '</div>');
 					document.getElementById('my_video_1').appendChild(closeButton);
 				}
 				// autoplay
@@ -205,4 +208,34 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
+});
+
+$(document).ready(function () {
+	var positionArray = ["right-top", "right-bottom", "left-bottom", "left-top"];
+	var positionCount = 0;
+	var watermark = $('.videojs-watermark-text');
+
+	setInterval(function () {
+		if (positionArray[positionCount] == "right-top") {
+			$('.videojs-watermark-text').css({'left': 'auto', 'right': '20px', 'bottom': '60px', 'top': 'auto'});
+		}
+
+		if (positionArray[positionCount] == "right-bottom") {
+			$('.videojs-watermark-text').css({'left': '20px', 'right': 'auto', 'bottom': '60px', 'top': 'auto'});
+		}
+
+		if (positionArray[positionCount] == "left-bottom") {
+			$('.videojs-watermark-text').css({'left': '20px', 'right': 'auto', 'bottom': 'auto', 'top': '60px'});
+		}
+
+		if (positionArray[positionCount] == "left-top") {
+			$('.videojs-watermark-text').css({'left': 'auto', 'right': '20px', 'bottom': 'auto', 'top': '60px'});
+		}
+
+		positionCount++;
+
+		if (positionCount == 4) {
+			positionCount = 0;
+		}
+	}, 50000);
 });

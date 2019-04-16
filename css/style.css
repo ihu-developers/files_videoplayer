@@ -238,4 +238,12 @@ video-js.vjs-ended .vjs-big-play-button,.video-js.vjs-paused .vjs-big-play-butto
 	min-width: 300px;
 	max-width: 100% !important;
 }
-.we {}
+
+.videojs-watermark-text {
+	position: absolute;
+	right: 20px;
+	top:60px;
+	color: #fff;
+	font-size:16px;
+	opacity: 0.3;
+}
