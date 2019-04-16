@@ -238,3 +238,5 @@ video-js.vjs-ended .vjs-big-play-button,.video-js.vjs-paused .vjs-big-play-butto
 	min-width: 300px;
 	max-width: 100% !important;
 }
+
+.watermark { }
